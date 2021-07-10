@@ -52,7 +52,7 @@ namespace ZoomInClass
             {
                 try
                 {
-                    if ((p.ProcessName.Contains("Zoom Meeting") || p.ProcessName.Contains("Zoom Webinar") || p.ProcessName.Contains("Zoom Sharing")) && !p.ProcessName.Equals("ZoomInClass"))
+                    if ((p.MainWindowTitle.Contains("Zoom Meeting") || p.MainWindowTitle.Contains("Zoom Webinar") || p.ProcessName.Equals("CptHost")) && !p.ProcessName.Equals("ZoomInClass"))
                         isZoomClassing = true;
                     else
                         isZoomClassing = false;
