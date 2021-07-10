@@ -2,7 +2,7 @@
 
 [日本語のREADMEはこちらから](README-ja.md)
 
-![sample](sample.png)
+![in-meeting-sample](img/in-meeting.png)
 
 If you are having a meeting in [Zoom](https://zoom.us/), use [Discord Rich Presence](https://discord.com/developers/docs/rich-presence/how-to) to view it in Discord.
 
@@ -26,7 +26,7 @@ Also, whether or not you are having a meeting is determined every 10 seconds bas
 
 ## Usage
 
-![sample2](sample2.gif)
+![usage](img/usage.gif)
 
 If you start a Zoom Meeting while `ZoomInClass.exe` is running, it will be displayed in Discord.
 

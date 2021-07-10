@@ -22,8 +22,8 @@ namespace ZoomInClass
             Hide();
             ShowInTaskbar = false;
 
-            client = new DiscordRpcClient("839191670145679400");
-            client.Logger = new ConsoleLogger() {Level = LogLevel.Warning};
+            client = new DiscordRpcClient("762930592865714216");
+            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
 
             //Subscribe to events
             client.OnReady += (_sender, _e) => { Console.WriteLine("Received Ready from user {0}", _e.User.Username); };
@@ -37,11 +37,6 @@ namespace ZoomInClass
             timer1.Start();
         }
 
-        void Deinitialize()
-        {
-            client.Dispose();
-        }
-
         Timestamps ts;
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -52,16 +47,22 @@ namespace ZoomInClass
             {
                 try
                 {
-                    if ((p.MainWindowTitle.Contains("Zoom Meeting") || p.MainWindowTitle.Contains("Zoom Webinar") || p.ProcessName.Equals("CptHost")) && !p.ProcessName.Equals("ZoomInClass"))
+                    if ((p.MainWindowTitle.Contains("Zoom Meeting") ||
+                        p.MainWindowTitle.Contains("Zoom Webinar") ||
+                        p.MainWindowTitle.Contains("Zoom ミーティング") ||
+                        p.ProcessName.Equals("CptHost")) &&
+                        !p.ProcessName.Equals("ZoomInClass"))
+                    {
                         isZoomClassing = true;
-                    else
-                        isZoomClassing = false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: {0}", ex.Message);
                 }
             }
+
+            Console.WriteLine("isZoomClassing: {0}", isZoomClassing);
 
             if (isZoomClassing)
             {
@@ -85,6 +86,11 @@ namespace ZoomInClass
                 client.ClearPresence();
                 ts = null;
             }
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            client.Dispose();
         }
     }
 }

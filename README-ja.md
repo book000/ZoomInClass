@@ -2,7 +2,7 @@
 
 [Click here for English README](README.md)
 
-![sample](sample.png)
+![in-meeting-sample](img/in-meeting.png)
 
 [Zoom](https://zoom.us/) でミーティングを行っている時に、[Discord Rich Presence](https://discord.com/developers/docs/rich-presence/how-to) を使用して表示します。
 
@@ -26,7 +26,7 @@
 
 ## Usage
 
-![sample2](sample2.gif)
+![usage](img/usage.gif)
 
 `ZoomInClass.exe` の実行中にZoomミーティングを開始すると、Discordで表示されます。
 
