@@ -47,23 +47,15 @@ namespace ZoomInClass
         private void timer1_Tick(object sender, EventArgs e)
         {
             Process[] ps = Process.GetProcesses();
-            Boolean isZoomClassing = false;
+            bool isZoomClassing = false;
             foreach (Process p in ps)
             {
                 try
                 {
-                    if (!p.ProcessName.Equals("Zoom"))
-                    {
-                        continue;
-                    }
-
-                    if (!p.MainWindowTitle.Equals("Zoom ミーティング") && !p.MainWindowTitle.Equals("Zoom Meetings") &&
-                        !p.MainWindowTitle.Equals("Zoom Meeting") && !p.MainWindowTitle.Equals("Zoom"))
-                    {
-                        continue;
-                    }
-
-                    isZoomClassing = true;
+                    if ((p.ProcessName.Contains("Zoom Meeting") || p.ProcessName.Contains("Zoom Webinar") || p.ProcessName.Contains("Zoom Sharing")) && !p.ProcessName.Equals("ZoomInClass"))
+                        isZoomClassing = true;
+                    else
+                        isZoomClassing = false;
                 }
                 catch (Exception ex)
                 {
