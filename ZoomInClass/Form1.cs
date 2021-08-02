@@ -76,6 +76,7 @@ namespace ZoomInClass
                     if ((p.MainWindowTitle.Contains("Zoom Meeting") ||
                         p.MainWindowTitle.Contains("Zoom Webinar") ||
                         p.MainWindowTitle.Contains("Zoom ミーティング") ||
+                        p.MainWindowTitle.Contains("Zoom ウェビナー") ||
                         p.ProcessName.Equals("CptHost")) &&
                         !p.ProcessName.Equals("ZoomInClass"))
                     {
