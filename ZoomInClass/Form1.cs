@@ -9,30 +9,56 @@ namespace ZoomInClass
 {
     public partial class Form1 : Form
     {
-        public DiscordRpcClient client;
+        [DllImport("kernel32.dll")]
+        private static extern bool AllocConsole();
 
-        [DllImport("user32")]
-        private static extern bool IsWindowVisible(IntPtr hWnd);
+        public DiscordRpcClient client;
 
         public Form1()
         {
             InitializeComponent();
 
+            string[] cmds = Environment.GetCommandLineArgs();
+            bool isDebugMode = false;
+            foreach (string cmd in cmds)
+            {
+                if (cmd.Equals("--debug"))
+                {
+                    isDebugMode = true;
+                }
+            }
+
             Visible = false;
             Hide();
             ShowInTaskbar = false;
 
-            client = new DiscordRpcClient("762930592865714216");
-            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
+            // Debug Mode
+            if (isDebugMode) {
+                AllocConsole();
+            }
 
-            //Subscribe to events
-            client.OnReady += (_sender, _e) => { Console.WriteLine("Received Ready from user {0}", _e.User.Username); };
+            client = new DiscordRpcClient("762930592865714216")
+            {
+                Logger = new ConsoleLogger() { Level = LogLevel.Info }
+            };
+
+            // Subscribe to events
+            client.OnReady += (_sender, _e) => {
+                Console.WriteLine("Received Ready from user {0}", _e.User.Username);
+            };
 
             client.OnPresenceUpdate += (_sender, _e) => { Console.WriteLine("Received Update! {0}", _e.Presence); };
 
-            //Connect to the RPC
-            client.Initialize();
-            Console.WriteLine("Initialized.");
+            // Connect to the RPC
+            bool isIntialized = client.Initialize();
+            if (isIntialized) {
+                Console.WriteLine("Initialized.");
+            }
+            else
+            {
+                MessageBox.Show("Error", "Failed to initialize! Is Discord running? If not, please start it.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             timer1.Start();
         }
@@ -88,7 +114,7 @@ namespace ZoomInClass
             }
         }
 
-        private void Form1_Deactivate(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             client.Dispose();
         }
