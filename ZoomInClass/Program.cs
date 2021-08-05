@@ -32,7 +32,6 @@ namespace ZoomInClass
         public static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Error (ThreadException)",
                 "An error has occurred and the operation has stopped.\n" +
                 "It would be helpful if you could report this bug using GitHub issues!\n" +
                 "https://github.com/book000/ZoomInClass/issues\n" +
@@ -45,6 +44,7 @@ namespace ZoomInClass
                 "\n" +
                 "Click OK to open the Create GitHub issue page.\n" +
                 "Click Cancel to close this application.",
+                "Error (ThreadException)",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Error);
 
@@ -61,7 +61,6 @@ namespace ZoomInClass
             if (ex != null)
             {
                 DialogResult result = MessageBox.Show(
-                    "Error (UnhandledException)",
                     "An error has occurred and the operation has stopped.\n" +
                     "It would be helpful if you could report this bug using GitHub issues!\n" +
                     "https://github.com/book000/ZoomInClass/issues\n" +
@@ -74,6 +73,7 @@ namespace ZoomInClass
                     "\n" +
                     "Click OK to open the Create GitHub issue page.\n" +
                     "Click Cancel to close this application.",
+                    "Error (UnhandledException)",
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Error);
 
