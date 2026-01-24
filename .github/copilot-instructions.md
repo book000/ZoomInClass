@@ -1,7 +1,7 @@
 # GitHub Copilot Instructions
 
 ## プロジェクト概要
-- 目的: [日本語の README はこちらから](README-ja.md)
+Discord Rich Presence integration for Zoom meetings. Displays current Zoom meeting status in Discord by monitoring Zoom window/process activity.
 
 ## 共通ルール
 - 会話は日本語で行う。
@@ -11,7 +11,8 @@
 - 既存のプロジェクトルールがある場合はそれを優先する。
 
 ## 技術スタック
-- パッケージマネージャー: pnpm 優先（ロックファイルに従う）。
+- 言語: C#, .NET Framework
+- パッケージマネージャー: NuGet
 
 ## コーディング規約
 - フォーマット: 既存設定（ESLint / Prettier / formatter）に従う。
@@ -22,9 +23,20 @@
 - TypeScript 使用時は strict 前提とし、`skipLibCheck` で回避しない。
 - 関数やインターフェースには docstring（JSDoc など）を記載する。
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# README を確認してください
+# install
+Download ZoomInClass.zip from Releases
+
+# dev
+Open ZoomInClass.sln in Visual Studio
+
+# build
+dotnet build ZoomInClass.sln
+
+# test
+Manual testing with Zoom + Discord
+
 ```
 
 ## テスト方針
@@ -35,5 +47,14 @@
 - ログに機密情報を出力しない。
 
 ## ドキュメント更新
+- 実装確定後、同一コミットまたは追加コミットで更新する。
+- README、API ドキュメント、コメント等は常に最新状態を保つ。
 
 ## リポジトリ固有
+- **type**: Desktop Application / Windows Utility
+**platforms:**
+  - Windows 10+
+- **debug_mode**: Supported via --debug flag
+- **auto_update**: Built-in auto-update on launch
+- **status**: Personal use only - no guarantee of accuracy
+- **update_interval**: 10-second polling for window title/process check

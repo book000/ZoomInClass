@@ -15,7 +15,15 @@
 - 日本語と英数字の間には半角スペースを入れる。
 
 ## プロジェクト概要
-- 目的: [日本語の README はこちらから](README-ja.md)
+Discord Rich Presence integration for Zoom meetings. Displays current Zoom meeting status in Discord by monitoring Zoom window/process activity.
+
+### 技術スタック
+- **言語**: C#, .NET Framework
+- **フレームワーク**: .NET Framework 4.8, Windows Forms
+- **パッケージマネージャー**: NuGet
+- **主要な依存関係**:
+  - DiscordRichPresence 1.0.175
+  - Newtonsoft.Json 13.0.1
 
 ## コーディング規約
 - フォーマット: 既存設定（ESLint / Prettier / formatter）に従う。
@@ -23,9 +31,20 @@
 - コメント言語: 日本語
 - エラーメッセージ: 英語
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# README を確認してください
+# install
+Download ZoomInClass.zip from Releases
+
+# dev
+Open ZoomInClass.sln in Visual Studio
+
+# build
+dotnet build ZoomInClass.sln
+
+# test
+Manual testing with Zoom + Discord
+
 ```
 
 ## 注意事項
@@ -34,3 +53,10 @@
 - 既存のプロジェクトルールがある場合はそれを優先する。
 
 ## リポジトリ固有
+- **type**: Desktop Application / Windows Utility
+**platforms:**
+  - Windows 10+
+- **debug_mode**: Supported via --debug flag
+- **auto_update**: Built-in auto-update on launch
+- **status**: Personal use only - no guarantee of accuracy
+- **update_interval**: 10-second polling for window title/process check

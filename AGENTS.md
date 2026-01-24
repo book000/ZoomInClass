@@ -25,3 +25,10 @@
 - ログに機密情報を出力しない。
 
 ## リポジトリ固有
+- **type**: Desktop Application / Windows Utility
+**platforms:**
+  - Windows 10+
+- **debug_mode**: Supported via --debug flag
+- **auto_update**: Built-in auto-update on launch
+- **status**: Personal use only - no guarantee of accuracy
+- **update_interval**: 10-second polling for window title/process check

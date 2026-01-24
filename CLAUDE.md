@@ -13,7 +13,15 @@
 - 前提・仮定・不確実性を明示し、仮定を事実のように扱わない。
 
 ## プロジェクト概要
-- 目的: [日本語の README はこちらから](README-ja.md)
+Discord Rich Presence integration for Zoom meetings. Displays current Zoom meeting status in Discord by monitoring Zoom window/process activity.
+
+### 技術スタック
+- **言語**: C#, .NET Framework
+- **フレームワーク**: .NET Framework 4.8, Windows Forms
+- **パッケージマネージャー**: NuGet
+- **主要な依存関係**:
+  - DiscordRichPresence 1.0.175
+  - Newtonsoft.Json 13.0.1
 
 ## 重要ルール
 - 会話言語: 日本語
@@ -42,25 +50,48 @@
 - TypeScript 使用時は `skipLibCheck` で回避しない。
 - 関数やインターフェースには docstring（JSDoc など）を記載する。
 
+### コーディング規約
+- **target_framework**: .NET Framework 4.8
+- **notes**: Windows Forms application with minimal external dependencies
+
 ## 相談ルール
 - Codex CLI: 実装レビュー、局所設計、整合性確認に使う。
 - Gemini CLI: 外部仕様や最新情報の確認に使う。
 - 他エージェントの指摘は黙殺せず、採用または理由を明記して不採用とする。
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# README を確認してください
+# install
+Download ZoomInClass.zip from Releases
+
+# dev
+Open ZoomInClass.sln in Visual Studio
+
+# build
+dotnet build ZoomInClass.sln
+
+# test
+Manual testing with Zoom + Discord
+
 ```
 
-## アーキテクチャと主要ファイル
+### プロジェクト構造
+
+**主要ディレクトリ:**
+- `ZoomInClass`
+- `.github`
+- `img`
 
 ## 実装パターン
+- 既存のコードパターンに従う。
+- プロジェクト固有の実装ガイドラインがある場合はそれに従う。
 
 ## テスト
 - 方針: 変更内容に応じてテストを追加する。
 
 ## ドキュメント更新ルール
 - 更新タイミング: 実装確定後、同一コミットまたは追加コミットで更新する。
+- README、API ドキュメント、コメント等は常に最新状態を保つ。
 
 ## 作業チェックリスト
 
@@ -91,3 +122,10 @@
 6. PR 本文の崩れがないことを確認する。
 
 ## リポジトリ固有
+- **type**: Desktop Application / Windows Utility
+**platforms:**
+  - Windows 10+
+- **debug_mode**: Supported via --debug flag
+- **auto_update**: Built-in auto-update on launch
+- **status**: Personal use only - no guarantee of accuracy
+- **update_interval**: 10-second polling for window title/process check
