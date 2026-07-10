@@ -4,7 +4,7 @@
 
 ZoomInClass is a Windows-only tray/background utility that shows a Zoom meeting
 as a Discord Rich Presence status ("In Meeting"). It polls running processes
-every 10 seconds and decides whether a Zoom meeting is active from window titles
+once a second and decides whether a Zoom meeting is active from window titles
 and process names. Personal-use tool; accuracy is not guaranteed.
 
 ## Tech stack
@@ -40,11 +40,11 @@ and process names. Personal-use tool; accuracy is not guaranteed.
   `Application.Run()` (no top-level form), so the process has no visible window.
 - `ZoomInClass/Form1.cs`: core logic. Builds the `DiscordRpcClient` (hardcoded
   Discord application ID `762930592865714216`), and `timer1_Tick` runs the
-  10-second poll: it flags a meeting when a process window title contains
+  once-a-second poll: it flags a meeting when a process window title contains
   `Zoom Meeting` / `Zoom Webinar` / `Zoom ミーティング` / `Zoom ウェビナー`, or the
   process name equals `CptHost`, while excluding `ZoomInClass` itself.
 - `ZoomInClass/Form1.Designer.cs`: designer-generated; the `timer1` interval
-  (10000 ms) lives here. Regenerate via the WinForms designer, do not hand-edit.
+  (1000 ms) lives here. Regenerate via the WinForms designer, do not hand-edit.
 
 ## Conventions
 

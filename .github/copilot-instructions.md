@@ -5,7 +5,7 @@ Guidance for reviewing pull requests in this repository.
 ## Project context
 
 - C# / .NET Framework 4.8 Windows Forms app. It shows an active Zoom meeting as a
-  Discord Rich Presence status by polling processes every 10 seconds.
+  Discord Rich Presence status by polling processes once a second.
 - Legacy `packages.config` NuGet style. Dependencies: `DiscordRichPresence`,
   `Newtonsoft.Json`. There are no automated tests and no CI build.
 
