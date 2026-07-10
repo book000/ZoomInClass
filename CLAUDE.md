@@ -35,7 +35,8 @@ and process names. Personal-use tool; accuracy is not guaranteed.
 ## Architecture / key files
 
 - `ZoomInClass/Program.cs`: entry point. Registers `Application.ThreadException`
-  and `AppDomain.UnhandledException` handlers that show an error dialog and offer
+  and the `AppDomain.UnhandledException` event (registered via
+  `Thread.GetDomain().UnhandledException`) handlers that show an error dialog and offer
   to open the GitHub issue page. Note it starts the app via `new Form1()` +
   `Application.Run()` (no top-level form), so the process has no visible window.
 - `ZoomInClass/Form1.cs`: core logic. Builds the `DiscordRpcClient` (hardcoded
@@ -58,7 +59,7 @@ and process names. Personal-use tool; accuracy is not guaranteed.
 
 ## Testing
 
-- No automated tests and no CI build (only `.github/FUNDING.yml` exists).
+- No automated tests and no CI build (there is no `.github/workflows/`).
 - Verify manually on Windows: start a Zoom meeting (or rename a window to match a
   detection string) with `--debug`, and confirm the Discord status updates and
   `isZoomClassing: True` is logged.
@@ -66,7 +67,8 @@ and process names. Personal-use tool; accuracy is not guaranteed.
 ## Documentation update rules
 
 - User-facing behavior changes (detection rules, requirements, debug flag) must
-  be reflected in both `README.md` and `README-ja.md` (they are kept in sync).
+  be reflected in both `README.md` and `README-ja.md`, which should be kept in
+  sync (they currently diverge in places, e.g. the tested OS version).
 - Update this file when the build/run commands, dependencies, or the detection
   logic in `Form1.cs` change.
 
